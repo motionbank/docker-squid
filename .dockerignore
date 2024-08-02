@@ -5,3 +5,5 @@ VERSION
 README.md
 Changelog.md
 Makefile
+kubernetes
+docker-compose.yml
