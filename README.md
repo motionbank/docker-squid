@@ -1,6 +1,8 @@
 [![Circle CI](https://circleci.com/gh/sameersbn/docker-squid.svg?style=shield)](https://circleci.com/gh/sameersbn/docker-squid) [![Docker Repository on Quay.io](https://quay.io/repository/sameersbn/squid/status "Docker Repository on Quay.io")](https://quay.io/repository/sameersbn/squid)
 
-# sameersbn/squid:3.5.27-2
+# motionbank/squid:5.7-2
+
+> A more current fork of sameersbn/squid (Version 5.7)
 
 - [Introduction](#introduction)
   - [Contributing](#contributing)
@@ -52,7 +54,7 @@ Automated builds of the image are available on [Dockerhub](https://hub.docker.co
 > **Note**: Builds are also available on [Quay.io](https://quay.io/repository/sameersbn/squid)
 
 ```bash
-docker pull sameersbn/squid:3.5.27-2
+docker pull motionbank/squid:5.7-2
 ```
 
 Alternatively you can build the image yourself.
@@ -69,7 +71,7 @@ Start Squid using:
 docker run --name squid -d --restart=always \
   --publish 3128:3128 \
   --volume /srv/docker/squid/cache:/var/spool/squid \
-  sameersbn/squid:3.5.27-2
+  motionbank/squid:5.7-2
 ```
 
 *Alternatively, you can use the sample [docker-compose.yml](docker-compose.yml) file to start the container using [Docker Compose](https://docs.docker.com/compose/)*
@@ -82,7 +84,7 @@ You can customize the launch command of the Squid server by specifying arguments
 docker run --name squid -it --rm \
   --publish 3128:3128 \
   --volume /srv/docker/squid/cache:/var/spool/squid \
-  sameersbn/squid:3.5.27-2 -h
+  motionbank/squid:5.7-2 -h
 ```
 
 ## Persistence
@@ -107,7 +109,7 @@ docker run --name squid -d --restart=always \
   --publish 3128:3128 \
   --volume /path/to/squid.conf:/etc/squid/squid.conf \
   --volume /srv/docker/squid/cache:/var/spool/squid \
-  sameersbn/squid:3.5.27-2
+  motionbank/squid:5.7-2
 ```
 
 To reload the Squid configuration on a running instance you can send the `HUP` signal to the container.
@@ -138,13 +140,9 @@ ENV http_proxy=http://172.17.0.1:3128 \
 
 ## Logs
 
-To access the Squid logs, located at `/var/log/squid/`, you can use `docker exec`. For example, if you want to tail the access logs:
+Unlike the original version, this fork does not log to file, but only to stdout.
 
-```bash
-docker exec -it squid tail -f /var/log/squid/access.log
-```
-
-You can also mount a volume at `/var/log/squid/` so that the logs are directly accessible on the host.
+For reference, see [this comment](https://github.com/scbunn/docker-squid/issues/5#issuecomment-966579008).
 
 # Maintenance
 
@@ -155,7 +153,7 @@ To upgrade to newer releases:
   1. Download the updated Docker image:
 
   ```bash
-  docker pull sameersbn/squid:3.5.27-2
+  docker pull motionbank/squid:5.7-2
   ```
 
   2. Stop the currently running image:
@@ -175,7 +173,7 @@ To upgrade to newer releases:
   ```bash
   docker run -name squid -d \
     [OPTIONS] \
-    sameersbn/squid:3.5.27-2
+    motionbank/squid:5.7-2
   ```
 
 ## Shell Access
