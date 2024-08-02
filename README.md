@@ -28,28 +28,12 @@ Squid is a caching proxy for the Web supporting HTTP, HTTPS, FTP, and more. It r
 If you find this image useful here's how you can help:
 
 - Send a pull request with your awesome features and bug fixes
-- Help users resolve their [issues](../../issues?q=is%3Aopen+is%3Aissue).
-- Support the development of this image with a [donation](http://www.damagehead.com/donate/)
-
-## Issues
-
-Before reporting your issue please try updating Docker to the latest version and check if it resolves the issue. Refer to the Docker [installation guide](https://docs.docker.com/installation) for instructions.
-
-SELinux users should try disabling SELinux using the command `setenforce 0` to see if it resolves the issue.
-
-If the above recommendations do not help then [report your issue](../../issues/new) along with the following information:
-
-- Output of the `docker version` and `docker info` commands
-- The `docker run` command or `docker-compose.yml` used to start the image. Mask out the sensitive bits.
-- Please state if you are using [Boot2Docker](http://www.boot2docker.io), [VirtualBox](https://www.virtualbox.org), etc.
 
 # Getting started
 
 ## Installation
 
-Automated builds of the image are available on [Dockerhub](https://hub.docker.com/r/sameersbn/squid) and is the recommended method of installation.
-
-> **Note**: Builds are also available on [Quay.io](https://quay.io/repository/sameersbn/squid)
+Automated builds of the image are available on [Dockerhub](https://hub.docker.com/r/motionbank/squid) and is the recommended method of installation.
 
 ```bash
 docker pull motionbank/squid:5.7-2
@@ -58,7 +42,7 @@ docker pull motionbank/squid:5.7-2
 Alternatively you can build the image yourself.
 
 ```bash
-docker build -t sameersbn/squid github.com/sameersbn/docker-squid
+docker build -t motionbank/squid github.com/motionbank/docker-squid
 ```
 
 ## Quickstart
