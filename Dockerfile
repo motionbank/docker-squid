@@ -12,10 +12,10 @@ COPY entrypoint.sh /sbin/entrypoint.sh
 RUN chmod 755 /sbin/entrypoint.sh
 
 RUN usermod -a -G tty proxy
-RUN echo "logfile_rotate 0 \
-          cache_log stdio:/dev/tty \
-          access_log stdio:/dev/tty \
-          cache_store_log stdio:/dev/tty" >> /etc/squid/squid.conf
+RUN echo "\nlogfile_rotate 0 \
+    \ncache_log stdio:/dev/tty \
+    \naccess_log stdio:/dev/tty \
+    \ncache_store_log stdio:/dev/tty\n" >> /etc/squid/squid.conf
 
 EXPOSE 3128/tcp
 ENTRYPOINT ["/sbin/entrypoint.sh"]
